@@ -1,0 +1,11 @@
+{
+  "name": "Money",
+  "short_name": "Money",
+  "description": "A banking app interface with cash balance, savings, and Bitcoin panels.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": []
+}

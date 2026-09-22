@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Money</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="screen" id="screen">
+    <div class="glow"></div>
+
+    <header>
+      <h1>Money</h1>
+      <div class="header-right">
+        <button class="icon-btn" id="searchBtn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div class="avatar" aria-label="Profile"></div>
+      </div>
+    </header>
+
+    <div class="locked-banner">
+      <button class="locked-pill" id="lockedPill">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="2" fill="#12210a"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#12210a" stroke-width="2" fill="none"/></svg>
+        <span id="lockLabel">Locked</span>
+      </button>
+      <div class="lockdown-text">LOCKDOWN</div>
+    </div>
+
+    <div class="balance-card">
+      <div class="balance-top">
+        <div class="balance-label">
+          Cash balance <span class="dots">••</span> <span class="money-font">9500</span> <span class="chevron">›</span>
+        </div>
+        <button class="eye-btn" id="eyeBtn" aria-label="Toggle balance visibility">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+            <line x1="3" y1="21" x2="21" y2="3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="balance-amount" id="balanceAmount">$920.84</div>
+
+      <div class="actions">
+        <button class="action-btn" id="addMoneyBtn">Add money</button>
+        <button class="action-btn" id="withdrawBtn">Withdraw</button>
+      </div>
+
+      <div class="status-row">
+        <div class="status-left">
+          <span class="status-bar"></span>
+          Green status
+        </div>
+        <div class="status-right">Through Aug 31</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-top">
+          <div>
+            <div class="panel-label">Savings</div>
+            <div class="panel-amount" id="savingsAmount">$500.37</div>
+            <div class="panel-sub">Earn 3.25% interest</div>
+          </div>
+          <div class="panel-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2fdb4e" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v10M9.5 9.2c0-1.2 1.1-2.1 2.5-2.1s2.5.8 2.5 1.9c0 2.6-5 1.4-5 4 0 1.1 1.1 1.9 2.5 1.9s2.5-.9 2.5-2.1" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-partial">
+        <div class="panel-top">
+          <div>
+            <div class="panel-label">Bitcoin</div>
+            <div class="panel-amount" id="bitcoinAmount">$4.1k</div>
+            <div class="panel-sub">0.041 BTC</div>
+          </div>
+          <div class="panel-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2fdb4e" stroke-width="1.8">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M9.5 8h4a2 2 0 0 1 0 4h-4m0 0h4.5a2 2 0 0 1 0 4h-4.5m0-8V6m0 12v-2m3-10v2m0 8v2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" id="navHome">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+        Home
+      </button>
+      <button class="nav-item" id="navCards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        Cards
+      </button>
+      <button class="nav-item" id="navActivity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 8 12 10 6 14 18 16 12 21 12"/></svg>
+        Activity
+      </button>
+      <button class="nav-item" id="navProfile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        Profile
+      </button>
+    </nav>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

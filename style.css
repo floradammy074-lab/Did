@@ -1,0 +1,356 @@
+:root{
+  --black:#000000;
+  --card:#161616;
+  --card2:#1b1b1b;
+  --grey-text:#8e8e93;
+  --white:#ffffff;
+  --green:#2fdb4e;
+  --green-dim:#7fd48a;
+  --locked-bg:#9fc98f;
+  --glow:#8fce3a;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* Cash App-style financial typography.
+   Money values use Cash Sans Mono consistently. */
+@font-face{
+  font-family:"Cash Sans Mono";
+  src:url("https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSansMono-Regular.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Cash Sans Mono";
+  src:url("https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSansMono-Medium.woff2") format("woff2");
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Cash Sans Mono";
+  src:url("https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSansMono-Bold.woff2") format("woff2");
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box;}
+html,body{
+  height:100%;
+  margin:0;
+  background:var(--black);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+
+.screen{
+  max-width:430px;
+  margin:0 auto;
+  min-height:100%;
+  background:var(--black);
+  color:var(--white);
+  position:relative;
+  overflow-x:hidden;
+  padding-bottom:40px;
+}
+
+/* top glow */
+.glow{
+  position:absolute;
+  top:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:130%;
+  height:420px;
+  background:radial-gradient(ellipse 60% 55% at 50% 30%, rgba(143,206,58,0.85) 0%, rgba(120,190,40,0.45) 35%, rgba(0,0,0,0) 72%);
+  filter:blur(6px);
+  pointer-events:none;
+  z-index:0;
+}
+
+header{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:calc(env(safe-area-inset-top,0px) + 22px) 20px 8px;
+}
+header h1{
+  margin:0;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+}
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.icon-btn{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.14);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:none;
+  cursor:pointer;
+}
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#3a3a3a url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="%232b2b2b"/><circle cx="20" cy="15" r="7" fill="%23555"/><path d="M6 38c0-9 6-14 14-14s14 5 14 14" fill="%23555"/></svg>') center/cover;
+  border:1.5px solid rgba(255,255,255,0.25);
+  flex-shrink:0;
+}
+
+.locked-banner{
+  position:relative;
+  z-index:1;
+  margin:14px 16px 0;
+  background:rgba(159,201,143,0.55);
+  border-radius:22px;
+  padding:16px 18px 46px;
+  overflow:hidden;
+  min-height:150px;
+}
+.locked-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--locked-bg);
+  color:#12210a;
+  font-weight:700;
+  font-size:15px;
+  padding:8px 14px;
+  border-radius:20px;
+  border:none;
+  cursor:pointer;
+}
+.locked-pill svg{width:14px;height:14px;flex-shrink:0;}
+.lockdown-text{
+  position:absolute;
+  left:12px;
+  right:-30px;
+  bottom:-6px;
+  font-family:"Bradley Hand","Segoe Script","Comic Sans MS",cursive;
+  font-size:64px;
+  color:#0f1a08;
+  font-weight:700;
+  transform:rotate(-1.5deg);
+  letter-spacing:1px;
+  white-space:nowrap;
+  opacity:0.92;
+}
+
+.balance-card{
+  position:relative;
+  z-index:2;
+  margin:-88px 0 0;
+  background:#000000;
+  border-radius:28px;
+  padding:22px 16px 26px;
+}
+.balance-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.balance-label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:#d9d9d9;
+  font-size:16px;
+  font-weight:500;
+}
+.balance-label .dots{
+  letter-spacing:1px;
+  font-weight:700;
+}
+.balance-label .chevron{
+  color:#8e8e93;
+  margin-left:2px;
+}
+.money-font{
+  font-family:"Cash Sans Mono",-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+.eye-btn{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#242424;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  border:none;
+  cursor:pointer;
+}
+.balance-amount{
+  font-family:"Cash Sans Mono",-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  font-size:44px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-1px;
+  margin:8px 0 24px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+}
+.action-btn{
+  flex:1;
+  background:#1c1c1c;
+  color:var(--white);
+  border:none;
+  border-radius:26px;
+  padding:19px 0;
+  font-size:17px;
+  font-weight:700;
+  text-align:center;
+  cursor:pointer;
+}
+.action-btn:active{
+  background:#282828;
+}
+
+.status-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#1c1c1c;
+  border-radius:20px;
+  padding:32px 18px;
+  margin-bottom:18px;
+}
+.status-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:16px;
+  font-weight:600;
+}
+.status-bar{
+  width:8px;
+  height:20px;
+  border-radius:2px;
+  background:var(--green);
+  box-shadow:0 0 8px rgba(47,219,78,0.6);
+}
+.status-right{
+  color:#c7c7c7;
+  font-size:15px;
+  font-weight:500;
+}
+
+.panel{
+  background:#1c1c1c;
+  border-radius:20px;
+  padding:26px 18px;
+  margin-bottom:18px;
+}
+.panel-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.panel-label{
+  color:#c9c9c9;
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.panel-amount{
+  font-family:"Cash Sans Mono",-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+  font-size:34px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-0.8px;
+}
+.panel-sub{
+  color:#9a9a9a;
+  font-size:14px;
+  margin-top:8px;
+  font-weight:500;
+}
+.panel-icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1.5px solid rgba(47,219,78,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.panel-partial{
+  margin-bottom:0;
+}
+
+/* hidden-balance state, toggled by script.js */
+.screen.balance-hidden .balance-amount,
+.screen.balance-hidden .panel-amount{
+  filter:blur(8px);
+  user-select:none;
+}
+
+/* ===== Bottom navigation bar ===== */
+.screen{
+  padding-bottom:calc(84px + env(safe-area-inset-bottom,0px));
+}
+
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:10;
+  max-width:430px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  background:rgba(18,18,18,0.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:10px 8px calc(10px + env(safe-area-inset-bottom,0px));
+}
+
+.nav-item{
+  background:none;
+  border:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  color:#7d7d82;
+  font-size:11px;
+  font-weight:600;
+  padding:6px 10px;
+  cursor:pointer;
+}
+.nav-item svg{
+  width:24px;
+  height:24px;
+}
+.nav-item.active{
+  color:var(--white);
+}
+.nav-item.active svg{
+  stroke:var(--green);
+}
